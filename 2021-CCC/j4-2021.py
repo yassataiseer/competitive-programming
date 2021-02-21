@@ -1,16 +1,16 @@
-def solve(data):
-    amount = 0
-    if sorted(data)==data:
-        return 0
-    while sorted(data) != data:
-        for numbers in data:
-            if data[numbers]<data[numbers-1]:
-                data[numbers],data[numbers-1] = data[numbers-1],data[numbers]
-                amount +=1
-            else:
-                pass
-    return amount
 
+def solve(list1):
+    counter = 0
+    difference = []
+    list2 = sorted(list1)
+    zip_object = zip(list1, list2)
+    for list1_i, list2_i in zip_object:
+        if list1_i-list2_i!= 0:
+            counter +=1
+        difference.append(list1_i-list2_i)
+    if counter == 0:
+        return counter
+    return counter-1
 data = []
 sorter = input()
 for i in sorter:
