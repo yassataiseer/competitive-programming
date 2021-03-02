@@ -10,7 +10,7 @@ def solve(list1):
         difference.append(list1_i-list2_i)
     if counter == 0:
         return counter
-    return counter-1
+    return counter
 data = []
 sorter = input()
 for i in sorter:

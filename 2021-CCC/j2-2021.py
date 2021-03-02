@@ -1,19 +1,21 @@
 def solve(names,bids):
-    max_amount = max(bids)
-    index_location = bids.index(max_amount)
-    return names[index_location]
+    highest = 0
+    Name = ""
+    for i in range(len(names)):
+        if bids[i]>highest:
+            x = bids[i]
+            highest = 0
+            highest += x
+            Name = names[i]
+    return Name
 
 names = []
 bids = []
 people = int(input())
-if people>100:
-    exit()
+
 for i in range(people):
     name = input()
-    bid = input()
-    if int(bid)>=2000 or abs(int(bid))!=int(bid):
-        pass
-    else:
-        names.append(name)
-        bids.append(bid)
+    bid = int(input())
+    names.append(name)
+    bids.append(bid)
 print(solve(names,bids))
