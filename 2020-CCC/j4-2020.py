@@ -7,7 +7,6 @@ def solve (string,full_string):
         last_letter = string[-1]
         end_string = string[:-1]
         string = last_letter + end_string 
-
         if full_string.find(string)>0:
             return "yes"
         counter +=1
