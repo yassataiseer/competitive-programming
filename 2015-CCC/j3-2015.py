@@ -15,6 +15,5 @@ def solve(word):
 
 
 
-
 word = input()
 print(solve(word))
