@@ -6,10 +6,18 @@ def solve(Name,Number,trail):
         for j in range(len(trail)):
             if Number[i] == trail[j]:
                 counter1 +=1
-                        
+            
             if counter < counter1 :
-                counter = counter1
-                name = Name[i]
+                if len(name) == 0:
+                    counter = counter1
+                    name = Name[i]
+                else: 
+                    value = Name.index(name)
+                    if int(Number[value])>int(Number[i]):
+                        counter = counter1
+                        name = Name[i]
+                    else:
+                        pass
     return name                
 
 
