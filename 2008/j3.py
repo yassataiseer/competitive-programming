@@ -2,22 +2,11 @@ def solve(Name,Number,trail):
     name = ""
     counter = 0
     for i in range(len(Number)):
-        counter1 = 0
-        for j in range(len(trail)):
-            if Number[i] == trail[j]:
-                counter1 +=1
-            
-            if counter < counter1 :
-                if len(name) == 0:
-                    counter = counter1
-                    name = Name[i]
-                else: 
-                    value = Name.index(name)
-                    if int(Number[value])>int(Number[i]):
-                        counter = counter1
-                        name = Name[i]
-                    else:
-                        pass
+        counter1 = trail.count(Number[i])
+        if counter1 > counter:
+            counter = counter1
+            name = Name[i]
+
     return name                
 
 
