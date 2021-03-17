@@ -1,15 +1,22 @@
 def solve(time):
+    time_count = time
     answer = 0
     hours = 12
     minutes = 0
     counter = 0
-    while time >= counter:
+    if time_count>=720:
+        amount = time_count%60
+        amount = time_count - amount
+        amount = int(amount/720)
+        answer +=  amount *31 
+        time_count = time_count%720
+    while time_count >= counter:
         counter +=1
         minutes +=1
         if minutes>= 60:
             minutes -=60
             hours += 1
-        if hours == 13:
+        if hours >= 13:
             hours = 1
         decision = calculate(str(hours),str(minutes))
         if decision == True:
@@ -36,6 +43,6 @@ def calculate(hour,minute):
     else:
         return False
         
-#print(calculate("12","34"))
+#print(calculate("1","59"))
 time = int(input())
 solve(time)
