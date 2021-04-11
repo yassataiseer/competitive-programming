@@ -1,23 +1,64 @@
 
-def solve(list1):
+
+
+def solve(query):
+    values = {"L":3,"M":2,"S":1}
+    answer = 0
+
+    query = list(query)    
+    prev_letter = query[0]
     counter = 0
-    difference = []
-    list2 = sorted(list1)
-    zip_object = zip(list1, list2)
-    for list1_i, list2_i in zip_object:
-        if list1_i-list2_i!= 0:
-            counter +=1
-        difference.append(list1_i-list2_i)
-    if counter == 0:
-        return counter
-    return counter
-data = []
-sorter = input()
-for i in sorter:
-    if i == "L":
-        data.append(1)
-    elif i == "M":
-        data.append(2)
-    else:
-        data.append(3)
-print(solve(data))
+    for letter in query:
+        if values[letter]<values[prev_letter]:
+            prev_letter =  letter
+            counter+=1
+        elif values[letter]>values[prev_letter]:
+            location = query.index(prev_letter)
+            current_loc = query.index(letter)
+            query[location],query[counter] = query[counter],query[location]
+            answer+=1
+            counter+=1
+        else:
+            counter+=1
+            pass
+    return answer
+
+query = input()
+print(solve(query))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
