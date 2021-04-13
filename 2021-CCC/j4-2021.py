@@ -49,16 +49,3 @@ print(solve(query))
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
