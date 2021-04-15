@@ -1,14 +1,16 @@
-def solve(list1):
-    counter = 0
-    difference = []
-    list2 = sorted(list1)
-    zip_object = zip(list1, list2)
-    for list1_i, list2_i in zip_object:
-        if list1_i-list2_i!= 0:
-            counter +=1
-        difference.append(list1_i-list2_i)
-    if counter == 0:
-        return counter
-    return counter-1
-
-print(solve([1,1,1,1,2]))
+set1 = []
+set2 = []
+prev_number = 0
+def ran(start, end):
+    return range(start, end+1)
+for num in range(5000):
+    if inp > 1:  
+        for i in ran(2, inp//2): 
+            if (inp % i) == 0: 
+                print(inp, "is not a prime number") 
+                break
+    else: 
+        print(inp, "is a prime number") 
+    
+    else: 
+    print(inp, "is not a prime number") 
