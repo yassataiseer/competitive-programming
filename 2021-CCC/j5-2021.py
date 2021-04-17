@@ -1,38 +1,35 @@
-def solve(canvas,instructions):
-    for i in instructions:
-        if instructions[0] == "R":
-            data = ""
-            row = canvas[int(instructions[1])]
-            location = canvas.index(row)
-            for k in location:
-                if k == "G":
-                    print(k)
-                    data += "B"
-                else:
-                    data +="G"
-            
-        elif instructions[0] == "C":
-            for k in canvas:
-                location = int(instructions[-1])
-                if k[location] == "G":
-                    k[location] == "B"
-                    print("CANVAS")
-                else:
-                    k[location] == "B"
-
-        return canvas
-            
-            
-                        
-
-canvas = []
-instructions = []
+answer = 0
+data = []
 rows = int(input())
 columns = int(input())
-cases = int(input())
-for i in range(cases):
-    x = input().split(" ")
-    instructions.append(x)
 for i in range(rows):
-    canvas.append("B"*columns)
-print(solve(canvas,instructions))
+    data.append(list(columns*"B"))
+row_strokes = []
+columns_strokes = []
+strokes = int(input())
+for i in range(strokes):
+    counter = 0
+    brush = input()
+    if brush[0]=="R":
+        for letters in data[int(brush[-1])-1]:
+            if letters=="B":
+                data[int(brush[-1])-1][counter]="G"
+                answer+=1
+            elif letters=="G":
+                data[int(brush[-1])-1][counter]= "B"
+                answer-=1
+            counter +=1
+    elif brush[0]=="C":
+        for rows in data:
+            if rows[int(brush[-1])-1]=="G":
+                rows[int(brush[-1])-1]="B"
+                answer-=1
+            elif rows[int(brush[-1])-1]=="B":
+                rows[int(brush[-1])-1]="G"
+                answer+=1
+'''    
+for stuff in data:
+    for other in stuff:
+        if other=="G":
+            answer +=1'''
+print(answer)
