@@ -26,4 +26,7 @@ P = int(input())
 people_infected = int(input())
 infection_rate = int(input())
 days = 0
-remove(days,people_infected,infection_rate,P, people_infected)
+if infection_rate==1 and people_infected==1:
+    print(P)
+else:
+    remove(days,people_infected,infection_rate,P, people_infected)
