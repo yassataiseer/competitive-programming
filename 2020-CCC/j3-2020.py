@@ -1,6 +1,6 @@
 def solve(top_right,bottom_left):
-    print(str(min(top_right)-1)+", "+str(min(bottom_left)-1))
-    print(str(max(top_right)+1)+", "+str(max(bottom_left)+1))
+    print(str(min(top_right)-1)+","+str(min(bottom_left)-1))
+    print(str(max(top_right)+1)+","+str(max(bottom_left)+1))
 
 
 top_right = []
