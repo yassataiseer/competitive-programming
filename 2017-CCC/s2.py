@@ -5,6 +5,11 @@ def solve(data):
     while counter>0:
         try:
             counter-=1
+            if len(data)==1:
+                if data[0]>max(small):
+                    big.append(data[0])
+                elif data[0]<max(small):
+                    small.append(data[0])
             big.append(max(data))
             data.remove(max(data))
             small.append(min(data))
