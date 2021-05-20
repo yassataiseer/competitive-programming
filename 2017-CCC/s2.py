@@ -11,6 +11,15 @@ def solve(data):
             data.remove(min(data))
         except ValueError:
             break
+    while min(big)<max(small):
+        big1 = max(big)
+        small1 = max(small)
+        big.remove(big1)
+        small.remove(small1)
+        big.append(small1)
+        small.append(big1)
+        small=sorted(small)
+        big = sorted(big)
     big = big[::-1]
     small = small[::-1]
 
