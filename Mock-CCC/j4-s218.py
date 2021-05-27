@@ -10,7 +10,6 @@ for i in range(times):
     x = input()
     x = list(x)
     if i ==0:
-
         if len(set(x))==len(x):
             latin_square_top = True
         if sorted(x)==x:
