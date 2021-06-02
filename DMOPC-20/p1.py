@@ -4,9 +4,12 @@ def solve(given_list):
     for i in range(len(given_list)):
         sum1 = sum(given_list[0:i])
         sum2 = sum(given_list)-sum1
-
-        difference.append(abs(sum1-sum2))
-    return min(difference)
+        if len(difference)==0:
+            difference.append(abs(sum1-sum2))
+        else:
+            if difference[0]>abs(sum1-sum2):
+                difference[0]=abs(sum1-sum2)
+    return difference[0]
 
 answer = []
 y = input()
