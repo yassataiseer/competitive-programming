@@ -18,9 +18,5 @@ else:
     print('bad')
 
 
-# Ada Alan John Grace
-# John Grace Alan Ada
-
-
 
 
