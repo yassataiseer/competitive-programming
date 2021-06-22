@@ -1,14 +1,16 @@
 def solve(team1,team2):
-    answer = 0
-    if sum(team1) ==sum (team2):
-        answer = len(team1)
-        return answer
+    answer = [0]
+    sumSwifts = 0 
+    sumSem =  0 
+    if sum(team1)==sum (team2):
+        return len(team1)
     for i in range(len(team1)):
-        i+=1
-        if sum(team1[0:i])==sum(team2[0:i]):
-            answer = i
+        sumSwifts += int(team1[i])
+        sumSem += int(team2[i])
+        if sumSwifts == sumSem:
+            answer.append(i + 1)
+    return max(answer)
 
-    return answer
 x = int(input())
 team1 = input()
 team2 = input()
