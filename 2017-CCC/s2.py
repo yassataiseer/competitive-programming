@@ -1,5 +1,4 @@
 def solve(data):
-    counter = len(data)
     big = []
     small = []
     if len(data)==1:
@@ -7,14 +6,19 @@ def solve(data):
     data=sorted(data)
     big = data[0:int(len(data)/2)]
     small = data[int(len(data)/2):len(data)]
-
-    small=sorted(small)
+    small = sorted(small)
     big = sorted(big)
     small = small[::-1]
     final = []
     for i in range(max(len(big),len(small))):
-        final.append(str(small[i]))
-        final.append(str(big[i]))
+        try:
+            final.append(str(small[i]))
+        except IndexError:
+            pass
+        try:
+            final.append(str(big[i]))
+        except IndexError:
+            pass
     final = final[::-1]
     print(" ".join(final))
 
