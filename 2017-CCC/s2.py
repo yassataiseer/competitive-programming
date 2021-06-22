@@ -23,11 +23,9 @@ def solve(data):
         small.remove(small1)
         big.append(small1)
         small.append(big1)
-        small=sorted(small)
-        big = sorted(big)
-    big = big[::-1]
+    small=sorted(small)
+    big = sorted(big)
     small = small[::-1]
-
     final = []
     for i in range(max(len(big),len(small))):
         final.append(str(small[i]))
