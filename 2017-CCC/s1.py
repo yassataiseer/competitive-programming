@@ -1,11 +1,13 @@
 def solve(team1,team2):
     answer = 0
+    if sum(team1) ==sum (team2):
+        answer = len(team1)
+        return answer
     for i in range(len(team1)):
-        i=i+1
+        i+=1
         if sum(team1[0:i])==sum(team2[0:i]):
             answer = i
-    if sum(team1) ==sum(team2):
-        answer = i
+
     return answer
 x = int(input())
 team1 = input()
