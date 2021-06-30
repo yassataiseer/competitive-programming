@@ -1,10 +1,11 @@
 #include <iostream>
 #include <string>
+#include<math.h>
 using namespace std;
 
 
 bool check(int number){
-    for (int i=2;i<number;i++){
+    for (int i=2;i<=sqrt(number);i++){
         if(number%i==0){
             return false;
         }
