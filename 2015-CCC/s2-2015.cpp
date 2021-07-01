@@ -13,7 +13,7 @@ int solve(int stats_amount, int stats[], int school_size[], int jersies_size[]){
     int answer = 0;
     map<int, int> used; 
     for (int i=0; i<stats_amount;i++){
-        if((stats[i]==school_size[i] || stats[i]<school_size[i])&& !(used.count(jersies_size[i])))
+        if((stats[i]<=school_size[i])&& !(used.count(jersies_size[i])))
         {
             used[jersies_size[i]] = jersies_size[i];
             answer++;
