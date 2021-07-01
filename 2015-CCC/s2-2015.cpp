@@ -6,15 +6,19 @@
 #include<numeric>
 #include <algorithm>
 
+#include<map> 
 using namespace std;
 
 int solve(int stats_amount, int stats[], int school_size[], int jersies_size[]){
     int answer = 0;
     vector<int> used_nums;
+    map<int, int> used; 
     for (int i=0; i<stats_amount;i++){
-        if((stats[i]==school_size[i] || stats[i]<school_size[i] )&& find(used_nums.begin(), used_nums.end(), jersies_size[i]) == used_nums.end())
+        
+        if((stats[i]==school_size[i] || stats[i]<school_size[i])&& !(used.count(jersies_size[i])))
         {
-            used_nums.push_back(jersies_size[i]);
+            //used_nums.push_back(jersies_size[i]);
+            used[jersies_size[i]] = jersies_size[i];
             answer++;
         }
     }
@@ -23,11 +27,7 @@ int solve(int stats_amount, int stats[], int school_size[], int jersies_size[]){
 
 
 int main(){
-    /*
-    int stats[] ={3,1,3} ;
-    int school_size[] = {2,1,1,3};
-    int jersies_size[] ={3,3,1};
-    cout << solve(3, stats,school_size,jersies_size) << endl;*/
+
     int stats_amount;
     int team_amout;
     cin >> stats_amount;
