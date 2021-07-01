@@ -11,13 +11,10 @@ using namespace std;
 
 int solve(int stats_amount, int stats[], int school_size[], int jersies_size[]){
     int answer = 0;
-    vector<int> used_nums;
     map<int, int> used; 
     for (int i=0; i<stats_amount;i++){
-        
         if((stats[i]==school_size[i] || stats[i]<school_size[i])&& !(used.count(jersies_size[i])))
         {
-            //used_nums.push_back(jersies_size[i]);
             used[jersies_size[i]] = jersies_size[i];
             answer++;
         }
@@ -27,7 +24,6 @@ int solve(int stats_amount, int stats[], int school_size[], int jersies_size[]){
 
 
 int main(){
-
     int stats_amount;
     int team_amout;
     cin >> stats_amount;
