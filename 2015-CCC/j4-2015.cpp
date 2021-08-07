@@ -18,7 +18,7 @@ int main(){
     string action[cases];
     int time[cases];
     map<int, int> time_sheet;
-    //vector<int> no_reply; need to insert removal function return -1
+    vector<int> no_reply;
     int current_time = 0;
     for(int i=0;i<cases;i++){
         char current_action;
@@ -29,14 +29,19 @@ int main(){
         }
         else if(current_action=='R'){
             time_sheet[friend_num] = current_time;
+            no_reply.push_back(friend_num);
         }
         else{
-            vector<int>::iterator new_end;
             time_sheet[friend_num] = abs(current_time-time_sheet[friend_num])-1;
+            no_reply.erase(remove(no_reply.begin(), no_reply.end(), friend_num), no_reply.end());
         }
         current_time++;
     }
-
+    
+    for(int i=0;i<no_reply.size();i++){
+        cout<<no_reply[i]<<endl;
+        time_sheet[no_reply[i]]= -1;
+    }
 
     map<int, int>::iterator time_sheets;
     for (time_sheets = time_sheet.begin(); time_sheets != time_sheet.end(); time_sheets++)
