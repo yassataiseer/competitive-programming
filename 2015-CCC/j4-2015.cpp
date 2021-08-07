@@ -39,7 +39,6 @@ int main(){
     }
     
     for(int i=0;i<no_reply.size();i++){
-        cout<<no_reply[i]<<endl;
         time_sheet[no_reply[i]]= -1;
     }
 
