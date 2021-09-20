@@ -35,7 +35,20 @@ int main(){
         }
         current_node = current_node->next;
     }
-    
+    //removing value "2" from list
+    Node* prev_node = first_node;
+    current_node = first_node;
+    while(current_node->next!=NULL){
+        if(current_node->data==2){
+            break;
+        }
+        prev_node = current_node;
+        current_node = current_node->next;
+    }
+    prev_node->next = current_node->next;
+    cout<<"removed value"<<endl;
+    cout << first_node->data<<endl;
+    cout << first_node->next->data <<endl;
     return 0;
 }
 
