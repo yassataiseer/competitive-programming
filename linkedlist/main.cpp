@@ -47,6 +47,7 @@ int main(){
     }
     prev_node->next = current_node->next;
     cout<<"removed value"<<endl;
+    delete current_node;
     cout << first_node->data<<endl;
     cout << first_node->next->data <<endl;
     return 0;
