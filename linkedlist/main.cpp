@@ -26,7 +26,7 @@ int main(){
     cout << first_node->next<<endl;
     cout <<second_node <<endl;
     cout <<second_node->next <<endl;
-    //search linked list below:
+    /* search linked list below:
     Node* current_node = first_node;
     while(current_node->next!=NULL){
         if(current_node->data==2){
@@ -34,8 +34,10 @@ int main(){
             break;   
         }
         current_node = current_node->next;
-    }
-    //removing value "2" from list
+    }*/
+
+    /*removing value "2" from list
+    
     Node* prev_node = first_node;
     current_node = first_node;
     while(current_node->next!=NULL){
@@ -50,6 +52,21 @@ int main(){
     delete current_node;
     cout << first_node->data<<endl;
     cout << first_node->next->data <<endl;
+    will return 1->3->Null
+    */
+    Node* prev_node = NULL;
+    Node* current_node = first_node;
+    Node* next_node;
+    while(current_node->next!=NULL){
+        next_node = current_node->next;
+        current_node->next = prev_node;
+        prev_node = current_node;
+        current_node = next_node;
+    }
+    cout << first_node->data<<endl;
+    cout << first_node->next <<endl;
+    cout << second_node->data <<endl;
+
     return 0;
 }
 
