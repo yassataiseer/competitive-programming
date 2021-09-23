@@ -60,6 +60,10 @@ class Stack{
             return value;
         }
     }
+    /* returns size of stack*/
+    int length(){
+        return size;
+    }
 };
 
 int main(){
@@ -69,10 +73,12 @@ int main(){
     myStack.add(4);
     myStack.add(2);
     myStack.add(1);
+    cout<<myStack.length()<<endl;
     cout<<myStack.pop()<<endl;
     cout<<myStack.pop()<<endl;
     cout<<myStack.pop()<<endl;
     cout<<myStack.pop()<<endl;
+    cout<<myStack.length()<<endl;
 
     return 0;
 }
