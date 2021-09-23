@@ -23,6 +23,7 @@ string solve(int rows,int columns,vector<vector<int> >data, map<int,int> posibil
     map<int, int>::iterator it;
     for (it = posibilities.begin(); it != posibilities.end(); it++)
     {
+        cout<<it->first<<" "<<it->second<<endl;
         if(it->first<rows||it->second<columns){}
         else{
             if(it->first+1==rows&&it->second+1==columns){
