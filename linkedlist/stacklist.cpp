@@ -29,30 +29,34 @@ class Stack{
     linked list 
     */
     void add(int value){
-        Node* New_node = new Node();
-        New_node->data = value;
         if(size==0){
             stack->data = value;
             stack->next = NULL; 
             size++;   
         }else{
-            Node* current_val = stack;
-            stack->data = value;
-            stack->next = current_val;
+            Node* current_val = new Node();
+            current_val->data = value;
+            current_val->next = stack;
+            
+            stack = current_val;
+
             size++;
             //New_node->next = stack->next;
         }
-        cout<< stack->data<<endl;
     }
-
+    /*
+    delete top value and return number returned
+    will return -1 if tail node
+    */
     int pop(){
-        if(stack->next==NULL){
+        if(stack->data==NULL){
             return -1;
         }
         else{
             int value = stack->data;
-            
             size--;
+            stack = stack->next;
+            //cout<< stack->data <<endl;
             return value;
         }
     }
@@ -65,5 +69,10 @@ int main(){
     myStack.add(4);
     myStack.add(2);
     myStack.add(1);
+    cout<<myStack.pop()<<endl;
+    cout<<myStack.pop()<<endl;
+    cout<<myStack.pop()<<endl;
+    cout<<myStack.pop()<<endl;
+
     return 0;
 }
