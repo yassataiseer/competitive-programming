@@ -23,6 +23,7 @@ class Stack{
     public:
     Node* stack = new Node();
     int size = 0;
+    int top;
     /*
     over here is the add implementation
     takes an integer values and maps it too current
@@ -43,42 +44,54 @@ class Stack{
             size++;
             //New_node->next = stack->next;
         }
+        top = stack->data;
     }
     /*
     delete top value and return number returned
     will return -1 if tail node
     */
     int pop(){
-        if(stack->data==NULL){
+        if(stack->next==NULL){
+            top = -1;
             return -1;
         }
         else{
             int value = stack->data;
             size--;
             stack = stack->next;
+            top = stack->data;
             //cout<< stack->data <<endl;
             return value;
         }
+        
     }
     /* returns size of stack*/
     int length(){
+        if(size==NULL){
+            return 0;
+        }
         return size;
     }
+    int front(){
+        return top;
+    }
+    
 };
 
 int main(){
-    Stack newStack;
     Stack myStack;
     myStack.add(5);
     myStack.add(4);
     myStack.add(2);
     myStack.add(1);
-    cout<<myStack.length()<<endl;
+    cout<<"top: "<<myStack.front()<<endl;
+    cout<<"size: "<<myStack.length()<<endl;
     cout<<myStack.pop()<<endl;
     cout<<myStack.pop()<<endl;
     cout<<myStack.pop()<<endl;
+    cout<<"top: "<<myStack.front()<<endl;
     cout<<myStack.pop()<<endl;
-    cout<<myStack.length()<<endl;
+    cout<<"size: "<<myStack.length()<<endl;
 
     return 0;
 }
