@@ -10,7 +10,7 @@
 #include <set>
 #include <stack>
 using namespace std;
-
+///THIS IS AN ADJACENCY GRAPH
 class graph{
     public:
         vector<vector<int> >adjlist;//where data is stored
