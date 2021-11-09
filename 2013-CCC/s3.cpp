@@ -68,7 +68,9 @@ int main(){
                     if(max_val==score[favTeam-1]){
                         answer++;
                     }else{
-                        if(max_val)   
+                        if(max_val){
+                            
+                        }   
                     }
                 }                
             }
