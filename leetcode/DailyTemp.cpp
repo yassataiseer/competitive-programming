@@ -18,16 +18,16 @@ public:
         for(int i=0;i<temperatures.size();i++){
             answer.push_back(0);
         }
-        map<int,int> temp;//first is value second is index
+        map<int,int> temp;//second is value first is index
         map<int,int>::iterator it;
         for(int i=0;i<temperatures.size();i++){
             for(it = temp.begin();it!=temp.end();it++){
-                if(it->first<temperatures[i]){
-                    answer[it->second] = i-it->second;
+                if(it->second<temperatures[i]){
+                    answer[it->first] = i-it->first;
                     temp.erase(it->first);
                 }
             }
-            temp[temperatures[i]] = i;           
+            temp[i] = temperatures[i];           
         }        
         return answer;
     }
