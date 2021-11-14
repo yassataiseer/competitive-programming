@@ -1,3 +1,18 @@
+#include <iostream>
+#include <map>
+#include <string>
+#include<vector>
+#include<math.h>
+#include<numeric>
+#include<algorithm>
+#include<iterator> 
+#include<iomanip>	
+#include <set>
+#include <stack>
+using namespace std;
+
+
+
 class Solution {
 public:
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
@@ -29,3 +44,7 @@ public:
         return false;
     }
 };
+
+int main(){
+    return 0;
+}
