@@ -9,40 +9,107 @@
 #include<iomanip>	
 using namespace std;
 
-int solve(vector<int> values){
-    int answer=0;
-    cout<<values.size()<<endl;
-    for(int i=0;i<values.size();i++){
-        if(values[i]==3){
-
+struct Books{
+    int L=0;
+    int M=0;
+    int S=0;
+    
+};
+int main(){
+    string order;
+    cin>>order;
+    int answer = 0;
+    int L=0;
+    int M=0;
+    int S=0;
+    for(int i=0;i<order.size();i++){
+        if(order[i]=='L'){
+            L++;
+        }else if(order[i]=='M'){
+            M++;
         }else{
-        int max_val = *max_element(values.begin()+i,values.end());
-            if(max_val>values[i]){
+            S++;
+        }
+    }
+
+
+    Books BookL;
+    for(int i=0;i<L;i++){
+        if(order[i]=='L'){
+            BookL.L++;
+        }else if(order[i]=='M'){
+            BookL.M++;
+        }else{
+            BookL.S++;
+        }        
+    }
+    Books BookM ;
+    for(int i=L;i<M+L;i++){
+        if(order[i]=='L'){
+            BookM.L++;
+        }else if(order[i]=='M'){
+            BookM.M++;
+        }else{
+            BookM.S++;
+        }        
+    }
+    if(BookM.M==M&&BookL.L==L){
+        cout<<answer<<endl;
+        return 0;
+    }
+
+    Books BookS;
+    for(int i=M;i<M+L+S;i++){
+        if(order[i]=='L'){
+            BookS.L++;
+        }else if(order[i]=='M'){
+            BookS.M++;
+        }else{
+            BookS.S++;
+        }        
+    }
+    if(M==0){
+        cout<<BookL.S<<endl;
+        return 0;
+        
+    }
+
+    if(BookL.L!=L){
+        while(BookM.L>0){
+            bool Mexists=false;
+            if(BookL.M>0){
+                Mexists=true;
+            }
+            if(Mexists){
+                BookL.L++;
+                BookM.L--;
+                BookM.M++;
+                BookL.M--;
                 answer++;
-                auto index = find(values.begin()+i, values.end(), max_val);
-                int max_index = index-values.begin();
-                int prev_val = values[i];
-                values[i] = max_val;
-                values[max_index] = prev_val;
+            }else{
+                if(BookL.S>0){
+                    BookL.L++;
+                    BookM.L--;
+                    BookM.S++;
+                    BookL.S--;
+                    answer++;
+                }
             }
         }
-
-    }    
-    return answer;
-}
-
-int main(){
-    map<char,int> mapped_vals;
-    mapped_vals['L'] = 3;
-    mapped_vals['M'] = 2;
-    mapped_vals['S'] = 1;
-    vector<int> values;
-
-    string input;
-    cin>>input;
-    for(char letter: input){
-        values.push_back(mapped_vals[letter]);
     }
-    cout<<solve(values)<<endl;
+
+
+    while(BookM.M!=M){
+            if(BookS.M>0){
+                BookS.S++;
+                BookS.M--;
+                BookM.M++;
+                BookM.S--;
+                answer++;
+            }
+    }
+
+    cout<<answer<<endl;
+    
     return 0;
  }
