@@ -96,9 +96,14 @@ int main(){
                 }
             }
         }
+    while(BookS.L>0&&BookL.S>0){
+            BookL.L++;
+            BookS.L--;
+            BookS.S++;
+            BookL.S--;
+            answer++;
     }
-
-
+    }
     while(BookM.M!=M){
             if(BookS.M>0){
                 BookS.S++;
