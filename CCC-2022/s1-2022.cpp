@@ -18,20 +18,20 @@ void traverse(int CurrentSum){
 }
 
 int main(){
-    int number;
+    int number = 0;
     cin>>number;
+    int answer = 0;
     if(number%5==0){
         answer++;
     }
-    
-    //traverse(number);
+    int currentNum = 0;
     while(number>0){
         number-=4;
         if(number%5==0){
-            
             answer++;
         }
     }
     cout<<answer<<endl;
+
     return 0;
 }
