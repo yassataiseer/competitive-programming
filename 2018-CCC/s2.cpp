@@ -1,74 +1,81 @@
-
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <string>
+#include <vector>
 #include<math.h>
-#include<string>
-#include<numeric>
-#include<algorithm>
-#include<iterator> 
+#include <algorithm>
+#include <iomanip>
+#include <set>
 
 using namespace std;
 
-bool check(vector< vector<int> > array){
-    int size = array[0].size();
-    vector< vector<int> > horizontalArray(size,vector<int>(size));
-    vector< vector<int> > verticalArray(size,vector<int>(size));
-    for(int m=0;m<array.size();m++){
 
-        for(int n=0;n<array[0].size();n++){
-            horizontalArray[m][n] = array[m][n];
-            verticalArray[m][n]= array[n][m];
+bool check( vector< vector<int> > Grid, int size){
+
+    vector< vector<int> >Columns(size,vector<int> (size,0));
+    for(int i=0;i<size;i++){
+        vector<int> CurrentVector = Grid.at(i);
+        vector<int> SortedVector = Grid.at(i);
+        sort(SortedVector.begin(),SortedVector.end());
+        if(!equal(CurrentVector.begin(),CurrentVector.end(),SortedVector.begin())){
+            return false;
         }
+        for(int j=0;j<CurrentVector.size();j++){
+            Columns[j][i] = CurrentVector[j];
+        }
+
     }
     for(int i=0;i<size;i++){
-        vector<int> horizontal;
-        vector<int> verticle;
-        copy(horizontalArray[i].begin(),horizontalArray[i].end(),back_inserter(horizontal));
-        copy(verticalArray[i].begin(),verticalArray[i].end(),back_inserter(verticle));
-        sort(horizontal.begin(),horizontal.end());
-        sort(verticle.begin(),verticle.end());
-        if(horizontal!=horizontalArray[i]){
-            return false;
-        }
-        if(verticle!=verticalArray[i]){
-            
+        vector<int> CurrentVector = Columns[i];
+        vector<int> SortedVector = Columns[i];
+        sort(SortedVector.begin(),SortedVector.end());
+        if(!equal(CurrentVector.begin(),CurrentVector.end(),SortedVector.begin())){
             return false;
         }
     }
+/*
+321
+753
+964
+*/
     return true;
-}
-
-void solve(vector< vector<int> > array){
-    while(!check(array)){
-       vector< vector<int> > newArray(array.size());
-        for(int n=array.size()-1;n>=0;n--){
-            for(int m=0;m<array.size();m++){
-                newArray[m].push_back(array[n][m]);
-            }        
-        }
-        array = newArray; 
-    }
-    for(vector<int> row: array){
-        for(int nums:row){
-            cout<<nums<<" ";
-        }
-        cout<<endl;
-    }
 
 }
+
+vector< vector<int> > Solve( vector< vector<int> > Grid, int size){
+    
+    while(!check(Grid,size)){
+        vector< vector<int> > newVector(size,vector<int> (size,0));
+        for(int i=0;i<size;i++){
+            for(int j=0;j<size;j++){
+                newVector[j][size-i-1] = Grid[i][j];
+            }
+        }
+        Grid= newVector;
+    }
+
+    return Grid;   
+}
+
 int main(){
     int N;
     cin>>N;
-    vector< vector<int> > array;
+    vector< vector<int> > Grid;
     for(int i=0;i<N;i++){
-        vector<int> row;
-        for(int x=0;x<N;x++){
-            int num;
-            cin>>num;
-            row.push_back(num);
+        vector<int> Row;
+        for(int j=0;j<N;j++){
+            int val;
+            cin>>val;
+            Row.push_back(val);
         }
-        array.push_back(row);
+        Grid.push_back(Row);
     }
-    solve(array);
+    vector< vector<int> > answer = Solve(Grid,N);
+    for(int i=0;i<N;i++){
+        vector<int> Row;
+        for(int j=0;j<N;j++){
+            cout<<answer[i][j]<<" ";
+        }
+        cout<<endl;
+    }
     return 0;
 }
