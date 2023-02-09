@@ -12,45 +12,47 @@ using namespace std;
 
 
 
-int solve(vector<int> Dmojistan,vector<int> Pegland, bool maxopt){
-    int answer = 0;
-    sort(Dmojistan.begin(),Dmojistan.end());
-    sort(Pegland.begin(),Pegland.end());
-    if(maxopt){
-        reverse(Pegland.begin(),Pegland.end());
-    }
-    for(int i=0;i<Dmojistan.size();i++){
-         answer+= max(Dmojistan[i],Pegland[i]);
- 
-
-    }
-
-    return answer;    
-}
-
-
 int main(){
-    int type;
-    cin >> type;
-    int citizens;
-    cin >> citizens;
-    vector<int> Dmojistan;
-    vector<int> Pegland;
 
-    for(int i=0;i<citizens;i++){
-        int num;
-        cin >> num;
-        Dmojistan.push_back(num);
+    int option;
+    cin>>option;
+    int contestants;
+    cin>>contestants;
+    vector<int> Line1;
+    vector<int> Line2;
+    for(int i=0;i<contestants;i++){
+        int n;
+        cin>>n;
+        Line1.push_back(n);
     }
-    for(int x=0;x<citizens;x++){
-        int num1;
-        cin >> num1;
-        Pegland.push_back(num1);
+    for(int i=0;i<contestants;i++){
+        int n;
+        cin>>n;
+        Line2.push_back(n);
     }
-    bool max = false;
-    if(type!=1){
-        max = true;
+    sort(Line1.begin(),Line1.end());
+    sort(Line2.begin(),Line2.end());
+    if(option==2){
+        reverse(Line2.begin(),Line2.end());
     }
-    cout<<solve(Dmojistan,Pegland,max)<<endl;
+    int answer = 0;
+    for(int i=0;i<contestants;i++){
+        answer+=max(Line1[i],Line2[i]);
+    }
+    cout<<answer<<endl;
+    /*
+    5 1 4
+    6 2 4
+
+    1 4 5
+    6 4 2
+
+    202 177 189 589 102
+    17 78 1 496 540
+
+    102 177 189 202 589
+    540 496  78  17  1 
+
+    */
     return 0;
 }
