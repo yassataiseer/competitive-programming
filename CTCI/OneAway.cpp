@@ -1,6 +1,6 @@
 /*
 O(N) time
-O(N) space
+O(1) space
 */
 
 #include <iostream>
@@ -17,23 +17,28 @@ O(N) space
 using namespace std;
 
 
-bool solveSize(string Longstr,string Shortstr){
-    map<char,int> Datamap;
-    
-    for(int i=0;i<Longstr.size();i++){
-        Datamap[Longstr[i]]+=1;
-    }
-    for(int i=0;i<Shortstr.size();i++){
-        Datamap[Shortstr[i]]-=1;
-        if(Datamap[Shortstr[i]]<0){
-            return false;
+
+bool solveSize2(string Longstr,string Shortstr){
+    int p1 = 0;
+    int p2 = 0;
+    while(p2<Shortstr.size()){
+        if(Longstr[p1]!=Shortstr[p2]){
+            p1++;
+            if(abs(p1-p2)>=2){
+                return false;
+            }
+            
+        }else{
+            p1++;
+            p2++;
         }
+        
+
     }
     return true;
     
 
 }
-
 
 bool solve(string s1, string s2){
     if(s1==s2){
@@ -57,9 +62,9 @@ bool solve(string s1, string s2){
     }
 
     if(s1.size()>s2.size()){
-        return solveSize(s1,s2);
+        return solveSize2(s1,s2);
     }
-    return solveSize(s2,s1);
+    return solveSize2(s2,s1);
     
 
 
@@ -72,7 +77,7 @@ int main(){
     cout<< solve("pales","pale")<<endl;
     cout<< solve("pale","bale")<<endl;
     cout<< solve("pale","bake")<<endl;
-
+    cout<< solve("pale","ple")<<endl;
 /*
 
 pale,ple true
